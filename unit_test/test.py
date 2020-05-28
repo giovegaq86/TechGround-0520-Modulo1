@@ -1,5 +1,6 @@
 import unittest
 from main import isPalindromo
+import TestRunner
 
 class TestPalindromo(unittest.TestCase):
 
@@ -17,4 +18,5 @@ class TestPalindromo(unittest.TestCase):
             isPalindromo(s)
 
 if __name__ == '__main__':
-    unittest.main()
+    # unittest.main()
+    TestRunner.main()

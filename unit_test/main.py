@@ -1,6 +1,6 @@
 
 def isPalindromo(value):
-    return value == value[::-1]
+    return value == value[::-2]
 
 def retorno(var):
     if isPalindromo(var):

@@ -1,3 +1,4 @@
+import com.company.Main;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,7 +15,8 @@ public class mainTest {
 
     @BeforeTest
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "/Users/alexandergonzalezfernandez/TechGround-0520-Modulo1/techground-practice/drivers/chromedriver");
+        String  driverPath = Main.class.getResource("/drivers/chromedriver").getPath();
+        System.setProperty("webdriver.chrome.driver", driverPath);
         driver = new ChromeDriver();
         baseUrl = "https://demo.opencart.com/index.php?route=account/login";
     }

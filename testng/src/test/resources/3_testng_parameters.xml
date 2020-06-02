@@ -1,15 +1,9 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 <suite name="Suite1" verbose="1" >
+    <parameter name="first-name"  value="Cedric"/>
     <test name="My suite">
-        <groups>
-            <dependencies>
-                <group name="saprissa" depends-on="laliga" />
-            </dependencies>
-        </groups>
-
         <classes>
-            <class name="main_test_testng"/>
+            <class name="testng_parameters"/>
         </classes>
-
     </test>
 </suite>

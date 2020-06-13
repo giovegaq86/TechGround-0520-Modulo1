@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class DemoAccount {
+public class DemoAccount{
 
     @BeforeTest
     public void setup(){

@@ -1,3 +1,4 @@
+import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Attachment;
 import io.qameta.allure.Description;
 import io.qameta.allure.Step;
@@ -5,29 +6,16 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.util.concurrent.TimeUnit;
 
-public class TestAccount {
+public class TestAccount extends BaseClass{
 
     @Description("Test that login feature works fine")
-    @Test
+    @Test(description = "Test Login Success", groups = "successful")
     public void Test_Login_Successful(){
-
-        String email = "hola@hola.com";
-        String password = "hola";
-
-        //String driverPath = TestAccount.class.getResource("/drivers/chromedriver").getPath();
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver");
-
-        WebDriver driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
-        driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
-
-        driver.get("https://demo.opencart.com/index.php");
+        System.out.println("*** Test");
 
         // go to login page
         driver.findElement(By.xpath("//span[text()='My Account']")).click();
@@ -46,29 +34,14 @@ public class TestAccount {
 
         Assert.assertTrue(logoutButton.isEnabled());
 
-        TakeScreenshot(driver);
-
-        driver.close();
-        driver.quit();
     }
 
     @Description("Test that login feature works fine when incorrect username")
-    @Test(description = "Test Login Successfull")
+    @Test(description = "Test Login Fail", groups = "failure")
     public void Test_Login_Unsuccessful(){
-
-        String email = "hola@hola-failx.com";
-        String password = "hola";
+        System.out.println("*** Test");
+        
         String expectedMessage = "Warning: No match for E-Mail Address and/or Password.";
-
-//        String driverPath = TestAccount.class.getResource("/drivers/chromedriver").getPath();
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver");
-
-        WebDriver driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
-        driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
-
-        driver.get("https://demo.opencart.com/index.php");
 
         // go to login page
         driver.findElement(By.xpath("//span[text()='My Account']")).click();
@@ -85,17 +58,8 @@ public class TestAccount {
         WebElement alertMessage = driver.findElement(By.xpath("//div[contains(@class,'alert-danger')]"));
 
         Assert.assertEquals(expectedMessage.toLowerCase(), alertMessage.getText().toLowerCase().trim());
-
-        TakeScreenshot(driver);
-
-
-        driver.close();
-        driver.quit();
     }
 
-    @Attachment(value = "screenshot", type = "image/png")
-    public byte[] TakeScreenshot(WebDriver driver){
-        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-    }
+
 
 }

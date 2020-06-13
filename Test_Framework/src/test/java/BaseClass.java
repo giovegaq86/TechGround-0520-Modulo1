@@ -6,10 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -27,26 +24,19 @@ public class BaseClass {
     }
 
     @Parameters({"browser","email","password"})
-    @BeforeMethod(alwaysRun = true)
-    public void setupMethod(String browser, String email, String password){
+    @BeforeMethod(onlyForGroups = "account")
+    public void setupMethod(@Optional  String browser, @Optional  String email, @Optional  String password){
 
         this.email = email;
         this.password = password;
 
-        System.out.println("** Before Method Setup");
+        setInitialConfiguration(browser);
+    }
 
-        if (browser.equals("firefox"))
-            driver = new FirefoxDriver();
-        else {
-            WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver();
-        }
-
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
-        driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
-
-        driver.get("https://demo.opencart.com/index.php");
+    @Parameters("browser")
+    @BeforeMethod(onlyForGroups = "search")
+    public void setupMethodSearch(String browser){
+        setInitialConfiguration(browser);
     }
 
     @AfterMethod(alwaysRun = true)
@@ -62,6 +52,23 @@ public class BaseClass {
         catch (WebDriverException ex){
             System.out.println("Session already closed!");
         }
+    }
+
+    private void setInitialConfiguration(String browser){
+        System.out.println("** Before Method Setup");
+
+        if (browser.equals("firefox"))
+            driver = new FirefoxDriver();
+        else {
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver();
+        }
+
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
+
+        driver.get("https://demo.opencart.com/index.php");
     }
 
     @Attachment(value = "screenshot", type = "image/png")

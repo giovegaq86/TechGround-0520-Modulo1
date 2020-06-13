@@ -16,6 +16,9 @@ public class BaseClass {
     protected String email;
     protected String password;
 
+    protected String searchCriteria;
+    protected int expectedResults;
+
     @BeforeTest
     public void setupTest(){
         System.out.println("* Before Test Setup");
@@ -25,7 +28,7 @@ public class BaseClass {
 
     @Parameters({"browser","email","password"})
     @BeforeMethod(onlyForGroups = "account")
-    public void setupMethod(@Optional  String browser, @Optional  String email, @Optional  String password){
+    public void setupMethod(@Optional String browser, @Optional String email, @Optional  String password){
 
         this.email = email;
         this.password = password;
@@ -33,9 +36,12 @@ public class BaseClass {
         setInitialConfiguration(browser);
     }
 
-    @Parameters("browser")
+    @Parameters({"browser","searchCriteria","expectedResults"})
     @BeforeMethod(onlyForGroups = "search")
-    public void setupMethodSearch(String browser){
+    public void setupMethodSearch(String browser, String searchCriteria, String expectedResults){
+        this.searchCriteria = searchCriteria;
+        this.expectedResults = Integer.parseInt(expectedResults);
+
         setInitialConfiguration(browser);
     }
 

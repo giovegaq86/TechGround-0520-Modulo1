@@ -2,9 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 <suite name="Account related Suite">
-    <parameter name="browser" value="chrome"></parameter>
     <test name="Login Functionality - Chrome">
-        <parameter name="browser" value="firefox"></parameter>
         <parameter name="email" value="hola@hola.com"></parameter>
         <parameter name="password" value="hola"></parameter>
         <groups>
@@ -13,20 +11,21 @@
             </run>
         </groups>
         <classes>
-            <class name="TestAccount"></class>
+            <class name="AccountTests"></class>
         </classes>
     </test>
 
     <test name="Login Functionality - Firefox">
         <parameter name="email" value="holasx@failure.com"></parameter>
         <parameter name="password" value="hola"></parameter>
+        <parameter name="browser" value="firefox"></parameter>
         <groups>
             <run>
                 <include name="failure"></include>
             </run>
         </groups>
         <classes>
-            <class name="TestAccount"></class>
+            <class name="AccountTests"></class>
         </classes>
     </test>
 

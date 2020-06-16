@@ -12,12 +12,9 @@ import java.util.concurrent.TimeUnit;
 
 public class BaseClass {
 
-    protected WebDriver driver;
-    protected String email;
-    protected String password;
+    public static String baseUrl = "https://demo.opencart.com/index.php";
 
-    protected String searchCriteria;
-    protected int expectedResults;
+    protected WebDriver driver;
 
     @BeforeTest
     public void setupTest(){
@@ -26,21 +23,9 @@ public class BaseClass {
         WebDriverManager.firefoxdriver().setup();
     }
 
-    @Parameters({"browser","email","password"})
-    @BeforeMethod(onlyForGroups = "account")
-    public void setupMethod(@Optional String browser, @Optional String email, @Optional  String password){
-
-        this.email = email;
-        this.password = password;
-
-        setInitialConfiguration(browser);
-    }
-
-    @Parameters({"browser","searchCriteria","expectedResults"})
-    @BeforeMethod(onlyForGroups = "search")
-    public void setupMethodSearch(String browser, String searchCriteria, String expectedResults){
-        this.searchCriteria = searchCriteria;
-        this.expectedResults = Integer.parseInt(expectedResults);
+    @BeforeMethod(alwaysRun = true)
+    @Parameters("browser")
+    public void setupMethod(@Optional("chrome") String browser){
 
         setInitialConfiguration(browser);
     }
@@ -74,7 +59,6 @@ public class BaseClass {
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
 
-        driver.get("https://demo.opencart.com/index.php");
     }
 
     @Attachment(value = "screenshot", type = "image/png")

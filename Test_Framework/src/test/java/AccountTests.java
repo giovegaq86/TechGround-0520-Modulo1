@@ -7,14 +7,21 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.*;
+import pageobject.HomePage;
 
 import java.util.concurrent.TimeUnit;
 
-public class TestAccount extends BaseClass{
+public class AccountTests extends BaseClass{
 
     @Description("Test that login feature works fine")
-    @Test(description = "Test Login Success", groups = "successful")
-    public void Test_Login_Successful(){
+    @Parameters({"email","password"})
+    @Test(description = "Test Login Success", groups = {"successful", "account"})
+    public void Test_Login_Successful(@Optional("") String email, @Optional("") String password){
+
+        HomePage homePage = new HomePage(driver, baseUrl + "/search");
+
+        homePage.loadPage();
+
         System.out.println("*** Test");
 
         // go to login page
@@ -37,10 +44,11 @@ public class TestAccount extends BaseClass{
     }
 
     @Description("Test that login feature works fine when incorrect username")
-    @Test(description = "Test Login Fail", groups = "failure")
-    public void Test_Login_Unsuccessful(){
+    @Parameters({"email","password"})
+    @Test(description = "Test Login Fail", groups = {"failure", "account"})
+    public void Test_Login_Unsuccessful(@Optional("") String email, @Optional("") String password){
         System.out.println("*** Test");
-        
+
         String expectedMessage = "Warning: No match for E-Mail Address and/or Password.";
 
         // go to login page

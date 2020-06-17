@@ -2,6 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 <suite name="Search related Suite">
+    <parameter name="browser" value="firefox"></parameter>
     <test name="Search Functionality - Chrome">
         <parameter name="expectedResults" value="3"></parameter>
         <parameter name="searchCriteria" value="macbook"></parameter>
@@ -10,10 +11,10 @@
         </classes>
     </test>
 
-    <test name="Search No Results - Chrome">
-        <parameter name="searchCriteria" value="ucreativa"></parameter>
-        <classes>
-            <class name="SearchTests"></class>
-        </classes>
-    </test>
+<!--    <test name="Search No Results - Chrome">-->
+<!--        <parameter name="searchCriteria" value="ucreativa"></parameter>-->
+<!--        <classes>-->
+<!--            <class name="SearchTests"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 </suite>

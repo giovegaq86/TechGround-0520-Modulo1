@@ -1,7 +1,5 @@
 package demo;
 
-import com.sun.javafx.scene.traversal.TopMostTraversalEngine;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
@@ -22,7 +20,7 @@ public class DemoAccount{
 
     @BeforeTest
     public void setup(){
-        WebDriverManager.chromedriver().setup();
+
     }
 
     @Ignore

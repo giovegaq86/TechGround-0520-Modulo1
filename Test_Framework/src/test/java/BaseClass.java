@@ -6,26 +6,26 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.*;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class BaseClass {
-
-    public static String baseUrl = "https://demo.opencart.com/index.php";
 
     protected WebDriver driver;
 
     @BeforeTest
     public void setupTest(){
         System.out.println("* Before Test Setup");
-
-        WebDriverManager.firefoxdriver().setup();
     }
 
+    @Parameters({"browser"})
     @BeforeMethod(alwaysRun = true)
-    @Parameters("browser")
-    public void setupMethod(@Optional("chrome") String browser){
+    public void setupMethod(@Optional("chrome") String browser) throws MalformedURLException {
 
         setInitialConfiguration(browser);
     }
@@ -45,20 +45,29 @@ public class BaseClass {
         }
     }
 
-    private void setInitialConfiguration(String browser){
+    private void setInitialConfiguration(String browser) throws MalformedURLException {
+
+//        DesiredCapabilities cap = DesiredCapabilities.chrome();
+//        cap.setBrowserName("chrome");
+//        String Node = "http://localhost:4444/wd/hub";
+//        driver = new RemoteWebDriver(new URL(Node), cap);
+
         System.out.println("** Before Method Setup");
 
-        if (browser.equals("firefox"))
+        if (browser.equals("firefox")){
+            WebDriverManager.firefoxdriver().setup();
             driver = new FirefoxDriver();
+        }
         else {
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
         }
 
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
 
+        driver.get("https://demo.opencart.com/index.php");
     }
 
     @Attachment(value = "screenshot", type = "image/png")
@@ -66,3 +75,6 @@ public class BaseClass {
         return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 }
+
+
+//npm i -g webdriver-manager

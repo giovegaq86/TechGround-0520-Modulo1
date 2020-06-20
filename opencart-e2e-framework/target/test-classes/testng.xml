@@ -1,0 +1,30 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Login Suite">
+
+    <test name="allow_user_to_do_login">
+        <parameter name="username" value="alexgf08@gmail.com"></parameter>
+        <parameter name="password" value="Test123"></parameter>
+        <parameter name="browser" value="chrome"></parameter>
+        <classes>
+            <class name="loginTest">
+                <methods>
+                    <include name="allow_user_to_do_login"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="do_not_allow_user_to_do_login">
+        <parameter name="username" value="alexgf08@gmail.com"></parameter>
+        <parameter name="password" value="Test"></parameter>
+        <parameter name="browser" value="chrome"></parameter>
+        <classes>
+            <class name="loginTest">
+                <methods>
+                    <include name="do_not_allow_user_to_do_login"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
+

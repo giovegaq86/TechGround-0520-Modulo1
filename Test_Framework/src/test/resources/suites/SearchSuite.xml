@@ -3,18 +3,10 @@
 
 <suite name="Search related Suite">
     <parameter name="browser" value="firefox"></parameter>
+    <parameter name="dataFile" value="src/test/resources/data/search.json"></parameter>
     <test name="Search Functionality - Chrome">
-        <parameter name="expectedResults" value="3"></parameter>
-        <parameter name="searchCriteria" value="macbook"></parameter>
         <classes>
-            <class name="SearchTests"></class>
+            <class name="selenium.SearchTests"></class>
         </classes>
     </test>
-
-<!--    <test name="Search No Results - Chrome">-->
-<!--        <parameter name="searchCriteria" value="ucreativa"></parameter>-->
-<!--        <classes>-->
-<!--            <class name="SearchTests"></class>-->
-<!--        </classes>-->
-<!--    </test>-->
 </suite>

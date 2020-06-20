@@ -1,3 +1,5 @@
+package selenium;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
@@ -5,6 +7,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -18,19 +21,19 @@ public class BaseClass {
 
     protected WebDriver driver;
 
-    @BeforeTest
-    public void setupTest(){
-        System.out.println("* Before Test Setup");
-    }
+//    @BeforeTest
+//    public void setupTest(){
+//        System.out.println("* Before Test Setup");
+//    }
 
     @Parameters({"browser"})
-    @BeforeMethod(alwaysRun = true)
+    @BeforeTest(alwaysRun = true)
     public void setupMethod(@Optional("chrome") String browser) throws MalformedURLException {
 
         setInitialConfiguration(browser);
     }
 
-    @AfterMethod(alwaysRun = true)
+    @AfterTest(alwaysRun = true)
     public void tearDownMethod(){
         System.out.println("** After Method Setup");
 
@@ -59,6 +62,8 @@ public class BaseClass {
             driver = new FirefoxDriver();
         }
         else {
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--log-level=3");
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
         }

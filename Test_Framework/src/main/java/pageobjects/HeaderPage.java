@@ -47,7 +47,10 @@ public class HeaderPage extends BasePage{
     }
 
     public void search(String searchCriteria){
-        driver.findElement(searchField).sendKeys(searchCriteria, Keys.ENTER);
+
+        WebElement searchBar = driver.findElement(searchField);
+        searchBar.clear();
+        searchBar.sendKeys(searchCriteria, Keys.ENTER);
 
         WebDriverWait wait = new WebDriverWait(driver, 20);
         wait.until(ExpectedConditions.urlContains(String.format("search=%s", searchCriteria)));

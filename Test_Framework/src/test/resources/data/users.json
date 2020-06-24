@@ -2,11 +2,13 @@
   "dataSet": [
     {
       "email": "hola@hola.com",
-      "password": "hola"
+      "password": "hola",
+      "shouldLogin": true
     },
     {
       "email": "holas@holafake.com",
-      "password": "password"
+      "password": "password",
+      "shouldLogin": false
     }
   ]
 }

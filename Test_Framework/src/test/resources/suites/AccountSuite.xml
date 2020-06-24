@@ -2,10 +2,8 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 <suite name="Account related Suite">
-    <parameter name="browser" value="firefox"></parameter>
+    <parameter name="browser" value="chrome"></parameter>
     <test name="Login Functionality - Firefox">
-        <parameter name="email" value="hola@hola.com"></parameter>
-        <parameter name="password" value="hola"></parameter>
         <classes>
             <class name="selenium.AccountTests">
                 <methods>

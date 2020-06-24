@@ -8,6 +8,10 @@
     <artifactId>Test_Framework</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <xmlSuite>src/test/resources/suites/AccountSuite.xml</xmlSuite>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.testng</groupId>
@@ -44,7 +48,6 @@
 
     <build>
         <plugins>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -72,7 +75,7 @@
                     </argLine>
                     <useSystemClassLoader>false</useSystemClassLoader>
                     <suiteXmlFiles>
-                        <suiteXmlFile>src/test/resources/suites/AccountSuite.xml</suiteXmlFile>
+                        <suiteXmlFile>${xmlSuite}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
                 <dependencies>
@@ -84,9 +87,5 @@
                 </dependencies>
             </plugin>
         </plugins>
-
-
     </build>
-
-
 </project>

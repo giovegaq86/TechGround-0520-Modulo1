@@ -15,6 +15,7 @@ public class HeaderPage extends BasePage{
     private By logoutLocator = By.xpath("//a[text()='Logout']");
     private By searchField = By.name("search");
 
+
     public HeaderPage(WebDriver _driver){
         super(_driver);
     }

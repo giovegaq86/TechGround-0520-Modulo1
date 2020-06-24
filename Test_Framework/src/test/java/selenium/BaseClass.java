@@ -17,23 +17,20 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-public class BaseClass {
+public class BaseClass extends PageObjectHandler{
 
-    protected WebDriver driver;
-
-//    @BeforeTest
-//    public void setupTest(){
-//        System.out.println("* Before Test Setup");
-//    }
+    @BeforeTest
+    public void setupTest(){
+        System.out.println("* Before Test Setup");
+    }
 
     @Parameters({"browser"})
-    @BeforeTest(alwaysRun = true)
+    @BeforeMethod(alwaysRun = true)
     public void setupMethod(@Optional("chrome") String browser) throws MalformedURLException {
-
         setInitialConfiguration(browser);
     }
 
-    @AfterTest(alwaysRun = true)
+    @AfterMethod(alwaysRun = true)
     public void tearDownMethod(){
         System.out.println("** After Method Setup");
 
@@ -68,11 +65,11 @@ public class BaseClass {
             driver = new ChromeDriver();
         }
 
+        driver.get("https://demo.opencart.com/index.php");
+
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
-
-        driver.get("https://demo.opencart.com/index.php");
     }
 
     @Attachment(value = "screenshot", type = "image/png")

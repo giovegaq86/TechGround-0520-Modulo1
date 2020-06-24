@@ -6,10 +6,9 @@ import org.openqa.selenium.WebDriverException;
 
 public class LoginPage extends BasePage{
 
-    private By emailFieldLocator = By.name("emails");
+    private By emailFieldLocator = By.name("email");
     private By passwordFieldLocator = By.name("password");
     private By loginButton = By.cssSelector("[value='Login']");
-    private By alertError = By.xpath("//div[contains(@class,'alert-danger')]");
 
     public LoginPage(WebDriver _driver){
         super(_driver);
@@ -25,16 +24,6 @@ public class LoginPage extends BasePage{
 
     public void clickLogin(){
         driver.findElement(loginButton).click();
-    }
-
-    public boolean isAlertPresentWithText(String expectedMessage){
-        boolean result = driver.findElement(alertError)
-                .getText()
-                .toLowerCase()
-                .trim()
-                .equals(expectedMessage.toLowerCase());
-
-        return result;
     }
 
     public void loginWithCredentials(String _email, String _password){

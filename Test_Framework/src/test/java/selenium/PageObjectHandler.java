@@ -12,9 +12,19 @@ public class PageObjectHandler {
     private SearchResultsPage _resultsPage;
     private HomePage _homePage;
     private ProductPage _productPage;
+    private CartPage _cartPage;
 
     public PageObjectHandler(){
 
+    }
+
+    public void  pagesCleanUp() {
+        _headerPage = null;
+        _loginPage = null;
+        _resultsPage = null;
+        _homePage = null;
+        _productPage = null;
+        _cartPage = null;
     }
 
     public HeaderPage headerPage() {
@@ -45,5 +55,11 @@ public class PageObjectHandler {
         if (_productPage == null)
             _productPage = new ProductPage(driver);
         return _productPage;
+    }
+
+    public CartPage cartPage(){
+        if (_cartPage == null)
+            _cartPage = new CartPage(driver);
+        return _cartPage;
     }
 }

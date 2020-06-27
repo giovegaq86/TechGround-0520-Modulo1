@@ -32,6 +32,8 @@ public class BaseClass extends PageObjectHandler{
 
     @AfterMethod(alwaysRun = true)
     public void tearDownMethod(){
+        pagesCleanUp();
+
         System.out.println("** After Method Setup");
 
         TakeScreenshot(driver);

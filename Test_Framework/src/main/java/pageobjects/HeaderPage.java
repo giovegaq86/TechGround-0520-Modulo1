@@ -50,6 +50,7 @@ public class HeaderPage extends BasePage{
     public void search(String searchCriteria){
 
         WebElement searchBar = driver.findElement(searchField);
+
         searchBar.clear();
         searchBar.sendKeys(searchCriteria, Keys.ENTER);
 

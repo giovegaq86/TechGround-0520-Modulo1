@@ -14,7 +14,7 @@ public class ProductPage extends BasePage{
 
    public void setAmountToAdd(int amount){
        driver.findElement(productQuantityLocator).clear();
-        driver.findElement(productQuantityLocator).sendKeys(String.valueOf(amount));
+       driver.findElement(productQuantityLocator).sendKeys(String.valueOf(amount));
    }
 
    public void clickAddToCart(){

@@ -12,6 +12,7 @@ public class HeaderPage extends BasePage{
 //   elementos
     private By myAccountLinkLocator = By.xpath("//span[text()='My Account']");
     private By loginLocator = By.linkText("Login");
+    private By registerLocator = By.linkText("Register");
     private By logoutLocator = By.xpath("//a[text()='Logout']");
     private By searchField = By.name("search");
 
@@ -28,9 +29,18 @@ public class HeaderPage extends BasePage{
         driver.findElement(loginLocator).click();
     }
 
+    public void clickOnRegister(){
+        driver.findElement(registerLocator).click();
+    }
+
     public void goToLogin(){
         this.clickOnMyAccount();
         this.clickOnLogin();
+    }
+
+    public void goToRegister(){
+        this.clickOnMyAccount();
+        this.clickOnRegister();
     }
 
     public boolean isLogoutEnabled(){

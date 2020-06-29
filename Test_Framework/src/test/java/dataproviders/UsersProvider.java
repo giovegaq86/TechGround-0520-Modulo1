@@ -13,13 +13,6 @@ import java.io.FileReader;
 import java.util.List;
 
 public class UsersProvider {
-    @DataProvider(name = "getUsersDataFromCode")
-    private Object[][] getSearchData(){
-        return new Object[][] {
-                { new UserAccount("hola@hola.com", "hola", true)},
-                { new UserAccount("holas@hola.com", "fake", false)}
-        };
-    }
 
     @DataProvider(name = "getUserDataFromJson")
     private Object[][] getSearchDataFromJson() throws FileNotFoundException {

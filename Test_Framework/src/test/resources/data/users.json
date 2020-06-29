@@ -1,14 +1,15 @@
 {
   "dataSet": [
     {
+      "firstName": "Giovanni",
+      "lastName": "Vega",
+      "phone": "87089734",
       "email": "hola@hola.com",
       "password": "hola",
+      "subscribe": "1",
+      "policy": true,
+      "successfulMessage": "Your Account Has Been Created!",
       "shouldLogin": true
-    },
-    {
-      "email": "holas@holafake.com",
-      "password": "password",
-      "shouldLogin": false
     }
   ]
 }

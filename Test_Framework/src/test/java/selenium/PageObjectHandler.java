@@ -13,6 +13,7 @@ public class PageObjectHandler {
     private HomePage _homePage;
     private ProductPage _productPage;
     private CartPage _cartPage;
+    private RegisterPage _registerPage;
 
     public PageObjectHandler(){
 
@@ -25,12 +26,19 @@ public class PageObjectHandler {
         _homePage = null;
         _productPage = null;
         _cartPage = null;
+        _registerPage = null;
     }
 
     public HeaderPage headerPage() {
         if (_headerPage == null)
                 _headerPage = new HeaderPage(driver);
         return _headerPage;
+    }
+
+    public RegisterPage registerPage(){
+        if (_registerPage == null)
+            _registerPage = new RegisterPage(driver);
+        return _registerPage;
     }
 
     public LoginPage loginPage(){

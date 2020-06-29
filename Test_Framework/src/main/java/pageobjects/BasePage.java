@@ -2,6 +2,7 @@ package pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class BasePage {
 
@@ -32,6 +33,11 @@ public class BasePage {
                 .equals(expectedMessage.toLowerCase());
 
         return result;
+    }
+
+    public WebElement findElementWithGenericLocator(String locator, String parameter){
+        locator = locator.replace("<param1>", parameter);
+        return driver.findElement(org.openqa.selenium.By.xpath(locator));
     }
 
 }

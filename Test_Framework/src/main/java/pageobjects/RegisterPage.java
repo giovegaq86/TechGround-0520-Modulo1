@@ -42,8 +42,7 @@ public class RegisterPage extends BasePage{
     }
 
     public String getSuccessfulMessage(){
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        WebElement message= wait.until(ExpectedConditions.presenceOfElementLocated(successfulMessageLocator));
+        WebElement message = this.waitForElementIsPresent(10, successfulMessageLocator);
         return message.getText();
     }
 

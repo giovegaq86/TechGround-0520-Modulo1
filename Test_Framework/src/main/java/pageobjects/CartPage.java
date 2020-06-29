@@ -9,6 +9,7 @@ import java.security.Policy;
 public class CartPage {
 
     private String productRowLocator = "//div[@id='content']//tr[contains(.,'<product>')]";
+    private By messageLocator = By.xpath("//div[@class='alert alert-danger alert-dismissible']");
     private WebElement productRow;
 
     private By inputOnRowLocator = By.cssSelector("input");
@@ -43,5 +44,9 @@ public class CartPage {
             System.out.println("Error al parsear el valor del campo");
             return 0;
         }
+    }
+
+    public String getMessage(){
+        return driver.findElement(messageLocator).getText();
     }
 }

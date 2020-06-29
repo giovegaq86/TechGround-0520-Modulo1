@@ -6,6 +6,9 @@ import org.openqa.selenium.WebElement;
 
 public class SearchResultsPage extends BasePage{
 
+    private String itemButtonLocator = "//a[text()='<param1>']";
+    private By successfulMessageLocator = By.xpath("//div[@class='alert alert-success alert-dismissible']");
+
     private static final String ERROR_WHEN_THERE_IS_NO_RESULTS = "There is no product that matches the search criteria.";
 
     private By resultThumbs = By.cssSelector(".product-thumb");
@@ -22,6 +25,11 @@ public class SearchResultsPage extends BasePage{
         WebElement contentElement = driver.findElement(By.id("content"));
         return contentElement.getAttribute("innerHTML").contains(ERROR_WHEN_THERE_IS_NO_RESULTS);
     }
+
+    public void clickItemButton(String item){
+        this.findElementWithGenericLocator(itemButtonLocator, item).click();
+    }
+
 
 
 }

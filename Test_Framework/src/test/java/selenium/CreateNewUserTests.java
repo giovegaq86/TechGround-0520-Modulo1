@@ -1,5 +1,4 @@
 package selenium;
-
 import dataproviders.UsersProvider;
 import io.qameta.allure.Description;
 import org.testng.Assert;
@@ -9,7 +8,7 @@ import pojo.UserAccount;
 
 public class CreateNewUserTests extends BaseClass {
 
-    @Description("Test that register a new user")
+    @Description("Test that create a new user")
     @Test(description = "Test Create a new user", dataProvider = "getUserDataFromJson", dataProviderClass = UsersProvider.class)
     public void Test_Create_New_User(UserAccount userAccount){
         // go to register page

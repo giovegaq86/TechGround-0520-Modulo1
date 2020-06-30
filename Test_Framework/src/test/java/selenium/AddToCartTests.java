@@ -11,7 +11,7 @@ public class AddToCartTests extends BaseClass {
 
 
 
-    @Description("Verify that add to cart works fine")
+    @Description("Verify that add item to cart works fine")
     @Test(description = "Add to Cart Test")
     public void Test_Add_To_Cart_Successful(){
 

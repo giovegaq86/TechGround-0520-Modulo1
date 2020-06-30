@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Final Project Giovanni Suite">
+    <parameter name="browser" value="chrome"></parameter>
+    <test name="Search and Add to Cart - Chrome">
+        <classes>
+            <class name="selenium.SearchAndAddToCartTests"></class>
+        </classes>
+    </test>
+    <test name="Check Item Prices - Chrome">
+        <classes>
+            <class name="selenium.CheckItemPricesTest"></class>
+        </classes>
+    </test>
+    <test name="Create a new user - Chrome">
+        <classes>
+            <class name="selenium.CreateNewUserTests"></class>
+        </classes>
+    </test>
+</suite>
